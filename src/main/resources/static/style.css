@@ -228,7 +228,6 @@ body {
     animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.27);
 }
 
-/* Modal and tutorial styles - no change needed */
 .modal {
     display: none;
     position: fixed;

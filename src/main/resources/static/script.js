@@ -103,28 +103,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         qrCodeDisplay.style.display = 'flex';
 
-        // Düyməni yüklənmə zamanı deaktiv edin
         generateBtn.disabled = true;
-        generateBtn.textContent = 'Yüklənir...';
+        generateBtn.textContent = 'Loading...';
 
-        // 'localhost:8080' yerinə tətbiqin işlədiyi domendən istifadə edin
         const currentDomain = window.location.origin;
 
         const imageUrl = `${currentDomain}/generate-qr?url=${encodeURIComponent(url)}&qrColor=${encodeURIComponent(qrColor)}&bgColor=${encodeURIComponent(bgColor)}`;
         qrCodeImage.src = imageUrl;
 
-        // Şəkil uğurla yükləndikdə düyməni bərpa edin
         qrCodeImage.onload = () => {
             generateBtn.disabled = false;
             generateBtn.textContent = 'Generate QR Code';
             downloadLink.style.display = 'flex';
         };
 
-        // Şəkil yüklənərkən xəta baş verdikdə düyməni bərpa edin
         qrCodeImage.onerror = () => {
             generateBtn.disabled = false;
             generateBtn.textContent = 'Generate QR Code';
-            showError("QR kodu yüklənərkən xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.");
+            showError("An error occurred while loading the QR code. Please try again.");
         };
 
         const downloadUrl = `${currentDomain}/download-qr?url=${encodeURIComponent(url)}&qrColor=${encodeURIComponent(qrColor)}&bgColor=${encodeURIComponent(bgColor)}`;
