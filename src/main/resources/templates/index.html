@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional QR Code Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/style.css}">
+
+    <link rel="icon" type="image/png" th:href="@{/images/qrcodelogo.png}">
+    <link rel="shortcut icon" type="image/png" th:href="@{/images/qrcodelogo.png}">
+</head>
+<body>
+<div class="background-animation"></div>
+
+<div class="card">
+    <div class="card-header">
+        <h1 class="title">QR Code Generator</h1>
+        <p class="subtitle">Instantly create and customize QR codes for any need.</p>
+    </div>
+
+    <div class="input-container">
+        <input type="url" id="urlInput" class="custom-input" placeholder="Enter URL here...">
+        <button id="generateBtn" class="generate-btn">Generate QR Code</button>
+    </div>
+
+    <div class="color-options-container">
+        <div class="color-palette-group">
+            <label class="color-label">QR Code Color:</label>
+            <div id="qrColorPalette" class="palette-options">
+                <div class="color-box selected" data-color="#000000" style="background-color: #000000;"></div>
+                <div class="color-box" data-color="#3b82f6" style="background-color: #3b82f6;"></div>
+                <div class="color-box" data-color="#059669" style="background-color: #059669;"></div>
+                <div class="color-box" data-color="#dc2626" style="background-color: #dc2626;"></div>
+                <div class="color-box" data-color="#6d28d9" style="background-color: #6d28d9;"></div>
+            </div>
+        </div>
+
+        <div class="color-palette-group">
+            <label class="color-label">Background Color:</label>
+            <div id="bgColorPalette" class="palette-options">
+                <div class="color-box selected" data-color="#FFFFFF" style="background-color: #FFFFFF; border: 1px solid #ccc;"></div>
+                <div class="color-box" data-color="#f8fafc" style="background-color: #f8fafc; border: 1px solid #ccc;"></div>
+                <div class="color-box" data-color="#fef3c7" style="background-color: #fef3c7;"></div>
+                <div class="color-box" data-color="#fee2e2" style="background-color: #fee2e2;"></div>
+                <div class="color-box" data-color="#d1d5db" style="background-color: #d1d5db;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="qr-code-display" style="display: none;">
+        <img id="qrCodeImage" src="" alt="Generated QR Code" class="qr-code-image">
+        <div class="action-buttons">
+            <a id="downloadLink" href="#" class="download-link" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download
+            </a>
+            <button id="infoBtn" class="info-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                How to Scan?
+            </button>
+        </div>
+    </div>
+
+    <div id="errorBox" class="error-box" style="display: none;">
+        <p id="errorMessage"></p>
+    </div>
+</div>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2 class="modal-title">How to Scan a QR Code</h2>
+        <div class="tutorial-animation-container">
+            <div class="phone">
+                <div class="camera"></div>
+                <div class="screen">
+                    <div class="qr-code-mockup"></div>
+                    <div class="notification">Tap to open link</div>
+                </div>
+            </div>
+        </div>
+        <div class="tutorial-steps-text">
+            <div class="tutorial-step step-1">
+                <p class="step-number">1</p>
+                <p class="step-text">Open your phone's camera app or a QR scanner.</p>
+            </div>
+            <div class="tutorial-step step-2">
+                <p class="step-number">2</p>
+                <p class="step-text">Point your camera at the QR code until it is detected.</p>
+            </div>
+            <div class="tutorial-step step-3">
+                <p class="step-number">3</p>
+                <p class="step-text">A notification will appear. Tap it to follow the link.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/script.js}"></script>
+</body>
+</html>

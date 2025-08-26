@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  qr-code-generator:
+    build: .
+    ports:
+      - "8080:8080"
