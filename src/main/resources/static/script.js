@@ -103,10 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         qrCodeDisplay.style.display = 'flex';
 
-        const imageUrl = `http://localhost:8080/generate-qr?url=${encodeURIComponent(url)}&qrColor=${encodeURIComponent(qrColor)}&bgColor=${encodeURIComponent(bgColor)}`;
+        const currentDomain = window.location.origin;
+
+        const imageUrl = `${currentDomain}/generate-qr?url=${encodeURIComponent(url)}&qrColor=${encodeURIComponent(qrColor)}&bgColor=${encodeURIComponent(bgColor)}`;
         qrCodeImage.src = imageUrl;
 
-        const downloadUrl = `http://localhost:8080/download-qr?url=${encodeURIComponent(url)}&qrColor=${encodeURIComponent(qrColor)}&bgColor=${encodeURIComponent(bgColor)}`;
+        const downloadUrl = `${currentDomain}/download-qr?url=${encodeURIComponent(url)}&qrColor=${encodeURIComponent(qrColor)}&bgColor=${encodeURIComponent(bgColor)}`;
         downloadLink.href = downloadUrl;
         downloadLink.style.display = 'flex';
     });
